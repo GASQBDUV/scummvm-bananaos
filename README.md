@@ -40,8 +40,8 @@ That is all: nothing else has to be installed. The zip carries its own copies of
 **Not yet checked button by button:** L1, L2, R1, L3, Y, Start, Select (they are set in `scummvm.gptk`; if one does nothing,
 change it there).
 **Tested games:** The Secret of Monkey Island (CD, DOS VGA): all three modes. Monkey Island 2 (Amiga) and Sam & Max Hit the Road
-were detected and registered by ScummVM, but I have not played them through; for them the verb screen is not set up, so R2 goes
-between mirror and zoom.
+were detected and registered by ScummVM, but I have not played them through. Monkey Island 2 is in the verb-screen list (same layout, unverified);
+Sam & Max is not, so for it R2 goes between mirror and zoom.
 
 ## Controls
 
@@ -69,17 +69,27 @@ is open.
 ## Which games get the verb screen?
 
 The top screen can only show "the room" if the game's interface sits at the bottom of the picture. `roms/ports/ScummVM/banana-split.txt`
-lists the games for which that is set up:
+lists the games for which that is set up (the title is the window title ScummVM gives while the game runs; the last matching line wins, `0` turns it off):
 
 ```
-# title substring = number of game lines (of 200) that stay on the top screen; the rest goes to the bottom screen
 Monkey Island=144
+Curse of Monkey Island=0
+Indiana Jones and the Last Crusade=144
+Indiana Jones and the Fate of Atlantis=144
+Day of the Tentacle=144
+Maniac Mansion=144
+Zak McKracken=144
+Loom=144
 ```
 
-The title is the window title ScummVM gives while the game runs; "Monkey Island" matches both Monkey Islands (only the first is verified).
+The number is the first game line (of 200) of the interface. ScummVM sets it to 144 by default for the classic SCUMM games
+(`initScreens(16, 144)` in `engines/scumm/scumm.cpp`). **Only The Secret of Monkey Island is verified on the device**; the others follow
+the same rule but have not been tried. The later games (Full Throttle, The Dig, Curse of Monkey Island) have no verb bar and only get mirror and zoom.
+Sam & Max Hit the Road is not in the list: I do not know where its interface starts.
+
 To add a game, find the line where its interface starts and add a line. To look at a game's picture, start it, then run on the
 device over SSH `touch /tmp/banana-dump`; the next frame is written to `/tmp/banana-frame.ppm` (see [docs/HOW-IT-WORKS.md](docs/HOW-IT-WORKS.md)).
-Games without an entry still have the mirror and the zoom.
+If a title is not matched, look in `log.txt` for the line `window title "..."`.
 
 ## How it works, in short
 

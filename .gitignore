@@ -1,0 +1,6 @@
+# build output, personal files
+out/
+*.zip
+*.ppm
+scummvm.ini
+log.txt

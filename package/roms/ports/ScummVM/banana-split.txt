@@ -1,0 +1,2 @@
+# title substring = number of game lines (of 200) that stay on the top screen; the rest goes to the bottom screen
+Monkey Island=144

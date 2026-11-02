@@ -24,7 +24,7 @@ RG DS Plus. The game's graphics belong to their owners; no game files are includ
 
 ## Install
 
-1. Download `ScummVM-bananaos-two-screens-v1.0.zip` from the [latest release](../../releases/latest).
+1. Download `ScummVM-bananaos-two-screens-v1.1.zip` from the [latest release](../../releases/latest).
 2. Unzip it at the **root of the data partition** (the card that holds `roms/`), so that `roms/ports/ScummVM.sh`,
    `roms/ports/ScummVM Two Screens.sh` and the folder `roms/ports/ScummVM/` end up next to your other ports.
 3. Put each game in its own folder under `roms/scummvm/`, for example `roms/scummvm/monkey1/` with `MONKEY.000`, `MONKEY.001`

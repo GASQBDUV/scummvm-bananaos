@@ -32,7 +32,7 @@ DISABLE_ALL="--disable-all-engines"
 ENABLE=""
 for e in $(echo "$ENGINES" | tr ',' ' '); do ENABLE="$ENABLE --enable-engine=$e"; done
 ./configure --host=aarch64-linux-gnu --backend=sdl $DISABLE_ALL $ENABLE --disable-debug --enable-optimizations \
-    --opengl-mode=none --enable-flac --enable-vorbis --enable-mad 2>&1 | tail -15
+    --opengl-mode=none --enable-flac --enable-vorbis --enable-mad --enable-vkeybd 2>&1 | tail -15
 
 # configure picks the native binutils names even when cross compiling: point them at the cross ones
 sed -i -E 's/^AR := ar cr/AR := aarch64-linux-gnu-ar cr/; s/^RANLIB := ranlib/RANLIB := aarch64-linux-gnu-ranlib/; s/^STRIP := strip/STRIP := aarch64-linux-gnu-strip/; s/^AS := as/AS := aarch64-linux-gnu-as/' config.mk
@@ -43,6 +43,10 @@ file "$OUT/scummvm"
 
 # shared libraries that BananaOS 0.5.0.1 does not ship (the others it needs are on the device: SDL2, ALSA, libpng, zlib,
 # freetype, libstdc++, vorbis, ogg)
+# the on-screen keyboard pictures (ScummVM finds them through --extrapath)
+mkdir -p "$OUT/extra"
+cp "$WORK/scummvm/backends/vkeybd/packs/vkeybd_default.zip" "$WORK/scummvm/backends/vkeybd/packs/vkeybd_small.zip" "$OUT/extra/"
+
 cd /usr/lib/aarch64-linux-gnu
 for f in libjpeg.so.62 libsndio.so.7 libbsd.so.0 libmd.so.0 libFLAC.so.14 libmad.so.0; do cp -L "$f" "$OUT/lib/"; done
 ls -la "$OUT" "$OUT/lib"

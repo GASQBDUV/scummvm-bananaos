@@ -33,7 +33,7 @@ fi
 # --joystick=-1: ScummVM's own game-controller handling is off, gptokeyb (scummvm.gptk) does all the input
 $GPTOKEYB "scummvm" -c "$GAMEDIR/scummvm.gptk" &
 BANANA_SPLIT_FILE="$GAMEDIR/banana-split.txt" LD_PRELOAD="$GAMEDIR/lib/banana-second.so" \
-    ./scummvm --config="$GAMEDIR/scummvm.ini" --joystick=-1 --path=/roms/scummvm >> "$GAMEDIR/log.txt" 2>&1
+    ./scummvm --config="$GAMEDIR/scummvm.ini" --joystick=-1 --extrapath="$GAMEDIR/extra" --path=/roms/scummvm >> "$GAMEDIR/log.txt" 2>&1
 kill -9 $(pidof gptokeyb) 2>/dev/null
 sync
 printf "\033c" >> /dev/tty1

@@ -20,7 +20,7 @@ def add(z, src, arcname, mode):
     info.external_attr = (0o100000 | mode) << 16
     info.compress_type = zipfile.ZIP_DEFLATED
     data = open(src, "rb").read()
-    if b"\r\n" in data and not src.endswith((".so", "scummvm")) and ".so." not in src:
+    if b"\r\n" in data and not src.endswith((".so", ".zip", "scummvm")) and ".so." not in src:
         sys.exit("CRLF line endings in " + src)
     z.writestr(info, data)
 
@@ -32,6 +32,9 @@ with zipfile.ZipFile(target, "w") as z:
             rel = os.path.relpath(src, package)
             add(z, src, rel, 0o755 if name.endswith(".sh") else 0o644)
     add(z, os.path.join(out_dir, "scummvm"), "roms/ports/ScummVM/scummvm", 0o755)
+    extra = os.path.join(out_dir, "extra")  # on-screen keyboard pictures
+    for name in sorted(os.listdir(extra)):
+        add(z, os.path.join(extra, name), "roms/ports/ScummVM/extra/" + name, 0o644)
     lib = os.path.join(out_dir, "lib")
     for name in sorted(os.listdir(lib)):
         add(z, os.path.join(lib, name), "roms/ports/ScummVM/lib/" + name, 0o755)

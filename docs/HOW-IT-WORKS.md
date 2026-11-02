@@ -72,3 +72,10 @@ Every line the library writes to ScummVM's log starts with `BANANA-SECOND:` (in 
 - The verb screen cuts the picture at a fixed game line. A game whose interface is not at the bottom (or that changes layout in
   the middle of the game) is not handled; zoom still works.
 - While ScummVM's own menu is open in the verb screen only the upper part is on the top screen. Press R2 to go back to mirror.
+
+## On-screen keyboard
+
+ScummVM is built with `--enable-vkeybd`; its keyboard pictures are found through `--extrapath` (`roms/ports/ScummVM/extra/`).
+ScummVM opens the keyboard on Ctrl+F7. gptokeyb can only send single keys, so `scummvm.gptk` maps Select (named `back` in gptokeyb;
+there is no `select`) to F7 and the shim adds Ctrl to that key press with `SDL_SetModState`, because ScummVM reads the modifiers
+from SDL, not from the event.

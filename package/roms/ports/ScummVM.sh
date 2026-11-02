@@ -26,7 +26,7 @@ if [ -d /roms/scummvm ]; then
 fi
 
 $GPTOKEYB "scummvm" -c "$GAMEDIR/scummvm.gptk" &
-./scummvm --config="$GAMEDIR/scummvm.ini" --joystick=-1 --path=/roms/scummvm >> "$GAMEDIR/log.txt" 2>&1
+./scummvm --config="$GAMEDIR/scummvm.ini" --joystick=-1 --extrapath="$GAMEDIR/extra" --path=/roms/scummvm >> "$GAMEDIR/log.txt" 2>&1
 kill -9 $(pidof gptokeyb) 2>/dev/null
 sync
 printf "\033c" >> /dev/tty1

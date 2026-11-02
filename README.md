@@ -9,7 +9,8 @@ used instead of sitting idle. Unzip it on the card, put your games in a folder, 
 - **Zoom** (works in every game): the top screen shows an enlarged part of the picture that follows the pointer, the bottom screen
   the whole picture with a frame around what is enlarged. 1.5x, 2x and 3x.
 
-One button (R2) goes round the three. Music in FLAC (the CD versions of the Monkey Islands), Ogg Vorbis and MP3 works.
+One button (R2) goes round the three. Music in FLAC (the CD versions of the Monkey Islands), Ogg Vorbis and MP3 works. An on-screen keyboard (Select) lets you type
+in games that ask for text, for example the copy protection codes of Monkey Island 2.
 
 | Mirror | Verb screen |
 |---|---|
@@ -24,7 +25,7 @@ RG DS Plus. The game's graphics belong to their owners; no game files are includ
 
 ## Install
 
-1. Download `ScummVM-bananaos-two-screens-v1.1.zip` from the [latest release](../../releases/latest).
+1. Download `ScummVM-bananaos-two-screens-v1.2.zip` from the [latest release](../../releases/latest).
 2. Unzip it at the **root of the data partition** (the card that holds `roms/`), so that `roms/ports/ScummVM.sh`,
    `roms/ports/ScummVM Two Screens.sh` and the folder `roms/ports/ScummVM/` end up next to your other ports.
 3. Put each game in its own folder under `roms/scummvm/`, for example `roms/scummvm/monkey1/` with `MONKEY.000`, `MONKEY.001`
@@ -36,8 +37,8 @@ That is all: nothing else has to be installed. The zip carries its own copies of
 (`libjpeg`, `libsndio`, `libbsd`, `libmd`, `libFLAC`, `libmad`), see [THIRD_PARTY.md](THIRD_PARTY.md).
 
 **Tested on:** bananaOS 0.5.0.1, Anbernic RG DS Plus. Other versions or devices: not tested.
-**Checked on the device:** the stick, A, touch in all three modes, the mode switch and the zoom following both stick and touch.
-**Not yet checked button by button:** L1, L2, R1, L3, Y, Start, Select (they are set in `scummvm.gptk`; if one does nothing,
+**Checked on the device:** the stick, A, Select (on-screen keyboard), touch in all three modes, the mode switch and the zoom following both stick and touch.
+**Not yet checked button by button:** L1, L2, R1, L3, Y, Start (they are set in `scummvm.gptk`; if one does nothing,
 change it there).
 **Tested games:** The Secret of Monkey Island (CD, DOS VGA): all three modes. Monkey Island 2 (Amiga) and Sam & Max Hit the Road
 were detected and registered by ScummVM, but I have not played them through. Monkey Island 2 is in the verb-screen list (same layout, unverified);
@@ -59,12 +60,18 @@ ScummVM's own game-controller handling is switched off (`--joystick=-1`), so onl
 | **X** | Esc (skip a cutscene, close a dialog) |
 | **Y** | skip a line of dialogue (the `.` key of the SCUMM games) |
 | **Start** | the game's menu (F5: save, load) |
-| **Select** | pause (space) |
+| **Select** | on-screen keyboard (type copy protection codes, names); tap the keys, Select again to close |
 | Touch, bottom screen | click where you tap (in the verb screen: on the matching verb or inventory item) |
 | **L + R** | quit (bananaOS' own combination) |
 
 ScummVM's own menu (opened from inside a game) is only half visible in the verb screen; press R2 to go back to mirror while it
 is open.
+
+## Typing text
+
+Some games ask for text, for example the copy protection of Monkey Island 2. Press **Select** to show ScummVM's on-screen keyboard
+(it is drawn in the game picture), tap the keys with the touch screen or the pointer, and press Select again to close it. It is
+easiest in the mirror or zoom mode. The pictures for it are in `roms/ports/ScummVM/extra/` (`vkeybd_default.zip`, `vkeybd_small.zip`).
 
 ## Which games get the verb screen?
 

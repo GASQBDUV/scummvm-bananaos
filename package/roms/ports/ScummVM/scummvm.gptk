@@ -10,11 +10,11 @@ r1 = mouse_slow
 r2 = f10
 # L3 (press the left stick) = zoom level in the zoom mode: 1.5x, 2x, 3x
 l3 = f8
-# X = Esc (skip cutscene, close dialog), Y = skip a line of dialogue, Start = game menu, Select = pause
+# X = Esc (skip cutscene, close dialog), Y = skip a line of dialogue, Start = game menu, Select = on-screen keyboard (copy protection, names)
 x = esc
 y = f9
 start = f5
-select = space
+back = f7
 # pointer: left stick and D-pad
 left_analog_up = mouse_movement_up
 left_analog_down = mouse_movement_down

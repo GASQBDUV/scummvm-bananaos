@@ -13,7 +13,7 @@
  *              put back where it was and one click is made there.
  *   2 zoom   : works in every game. The top panel shows an enlarged part (1.5x, 2x, 3x; F8 changes it, gptokeyb maps
  *              L3 to F8) that follows the pointer, the bottom panel shows the whole picture with a frame around it.
- * F9 is turned into '.' (skips a line of dialogue in SCUMM games).
+ * F7 opens the on-screen keyboard (turned into Ctrl+F7). F9 is turned into '.' (skips a line of dialogue in SCUMM games).
  *
  * Env: BANANA_SECOND=0 disables, BANANA_SECOND_MS (min ms between mirrored frames, default 40), BANANA_PANEL_ID (1),
  *      BANANA_SPLIT_FILE (lines "title substring=room lines of 200"), BANANA_KEEP_POINTER=0, BANANA_AUTOCLICK=0,
@@ -492,6 +492,13 @@ int SDL_PollEvent(SDL_Event *ev) {
         /* F9 (a gamepad button via gptokeyb) becomes '.', which skips a line of dialogue in SCUMM games */
         if ((ev->type == SDL_KEYDOWN || ev->type == SDL_KEYUP) && ev->key.keysym.scancode == SDL_SCANCODE_F9) {
             ev->key.keysym.scancode = SDL_SCANCODE_PERIOD; ev->key.keysym.sym = SDLK_PERIOD;
+        }
+        /* F7 (a gamepad button via gptokeyb) opens ScummVM's on-screen keyboard, which listens for Ctrl+F7:
+         * ScummVM reads the modifiers from SDL_GetModState(), so Ctrl is set while the key is down */
+        if ((ev->type == SDL_KEYDOWN || ev->type == SDL_KEYUP) && ev->key.keysym.scancode == SDL_SCANCODE_F7) {
+            LOG("F7 %s -> Ctrl+F7", ev->type == SDL_KEYDOWN ? "down" : "up");
+            SDL_SetModState(ev->type == SDL_KEYDOWN ? KMOD_LCTRL : KMOD_NONE);
+            ev->key.keysym.mod = ev->type == SDL_KEYDOWN ? KMOD_LCTRL : KMOD_NONE;
         }
         if ((ev->type == SDL_KEYDOWN || ev->type == SDL_KEYUP) && ev->key.keysym.scancode == SDL_SCANCODE_F10) {
             if (ev->type == SDL_KEYDOWN && !ev->key.repeat) {

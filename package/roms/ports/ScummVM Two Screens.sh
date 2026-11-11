@@ -31,9 +31,16 @@ if [ -d /roms/scummvm ]; then
 fi
 
 # --joystick=-1: ScummVM's own game-controller handling is off, gptokeyb (scummvm.gptk) does all the input
+# ScummVM draws the launcher at 960x720 (scale factor 3), so the GUI is scaled up to a readable size, and the theme is
+# forced because ScummVM rewrites these two keys when it exits
+[ -f "$GAMEDIR/scummvm.ini" ] || echo '[scummvm]' >"$GAMEDIR/scummvm.ini"
+for kv in gui_scale=150 gui_theme=scummbanana; do
+    if grep -q "^${kv%%=*}=" "$GAMEDIR/scummvm.ini"; then sed -i "s/^${kv%%=*}=.*/$kv/" "$GAMEDIR/scummvm.ini"
+    else sed -i "/^\[scummvm\]/a $kv" "$GAMEDIR/scummvm.ini"; fi
+done
 $GPTOKEYB "scummvm" -c "$GAMEDIR/scummvm.gptk" &
 BANANA_SPLIT_FILE="$GAMEDIR/banana-split.txt" LD_PRELOAD="$GAMEDIR/lib/banana-second.so" \
-    ./scummvm --config="$GAMEDIR/scummvm.ini" --joystick=-1 --extrapath="$GAMEDIR/extra" --path=/roms/scummvm >> "$GAMEDIR/log.txt" 2>&1
+    ./scummvm --config="$GAMEDIR/scummvm.ini" --joystick=-1 --filtering --scaler=normal --scale-factor=3 --extrapath="$GAMEDIR/extra" --themepath="$GAMEDIR/extra" --path=/roms/scummvm >> "$GAMEDIR/log.txt" 2>&1
 kill -9 $(pidof gptokeyb) 2>/dev/null
 sync
 printf "\033c" >> /dev/tty1

@@ -13,6 +13,10 @@ The zip contains the ScummVM program and six shared libraries. Everything is bui
 | FLAC (`libFLAC.so.14`) | 1.5.0+ds-2 | BSD-3-Clause | <https://packages.debian.org/source/trixie/flac> |
 | libmad (`libmad.so.0`) | 0.15.1b-11 | GPL-2.0-or-later | <https://packages.debian.org/source/trixie/libmad> |
 
+The menu theme `scummbanana.zip` is ScummVM's *scummremastered* theme (GPL-2.0-or-later) recolored, with the **Inter** font
+(`Inter-Regular.ttf`, `Inter-Bold.ttf`; SIL Open Font License 1.1, licence text in `roms/ports/ScummVM/extra/Inter-LICENSE.txt`,
+<https://github.com/rsms/inter>). Its colours follow Banana Player's Midnight theme. `gui-icons.dat` is built with ScummVM, unchanged.
+
 `banana-second.so` is this repository's own code (GPL-3.0-or-later).
 
 ScummVM links libmad (GPL), so the zip as a whole is distributed under the GPL. To get the exact sources: the commit above for

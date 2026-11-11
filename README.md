@@ -73,6 +73,19 @@ Some games ask for text, for example the copy protection of Monkey Island 2. Pre
 (it is drawn in the game picture), tap the keys with the touch screen or the pointer, and press Select again to close it. It is
 easiest in the mirror or zoom mode. The pictures for it are in `roms/ports/ScummVM/extra/` (`vkeybd_default.zip`, `vkeybd_small.zip`).
 
+## The menu and its theme
+
+The launcher is drawn at 960x720 (scale factor 3, GUI scale 150 %), close to the panel's 1024x768, so text and buttons are sharp, and
+it uses the **Banana Midnight** theme: black background, cream text, a yellow accent and 2 px edges, taken from the Midnight theme of
+[Banana Player](https://github.com/tonywei92/banana-player) and from bananaOS's own menu. It is ScummVM's own *scummremastered* theme
+with new colours and the Inter font (`roms/ports/ScummVM/extra/scummbanana.zip`). `build/make-theme.py` makes it again:
+
+    python3 build/make-theme.py <scummremastered.zip> <folder with Inter-Regular.ttf and Inter-Bold.ttf> scummbanana.zip
+
+The launchers set `gui_theme` and `gui_scale` in `scummvm.ini` before every start (ScummVM rewrites them when it quits). To use another
+theme, change `gui_theme=scummbanana` in the launcher; the other themes in ScummVM's *Global Options > GUI* need `gui-icons.dat`, which is
+in `extra/` too.
+
 ## Which games get the verb screen?
 
 The top screen can only show "the room" if the game's interface sits at the bottom of the picture. `roms/ports/ScummVM/banana-split.txt`

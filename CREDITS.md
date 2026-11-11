@@ -12,6 +12,8 @@
   of keeping only the room on the main screen and moving the sentence line, verbs and inventory to the second screen. No code was used.
 - **The ScummVM DS and 3DS ports**: the zoom mode (a magnified part of the picture on one screen, an overview on the other) and touch as
   "tap to click" follow what those ports do.
+- **[Banana Player](https://github.com/tonywei92/banana-player)** (tonywei92) and **bananaOS**: the look of the menu theme (the Midnight
+  palette, edges and yellow focus). **Inter** (Rasmus Andersson and contributors, OFL) is the font.
 - **[PortMaster](https://portmaster.games/)**: `gptokeyb`, which turns the gamepad into keyboard and mouse, and the launcher conventions used here.
 - The bottom-panel drawing through DRM is the technique first used in the Lighthouse companion screen for bananaOS
   (`BananaPanel.cpp`, from the same author as this repository).

@@ -4,3 +4,4 @@ out/
 *.ppm
 scummvm.ini
 log.txt
+!package/roms/ports/ScummVM/extra/scummbanana.zip

@@ -46,6 +46,8 @@ file "$OUT/scummvm"
 # the on-screen keyboard pictures (ScummVM finds them through --extrapath)
 mkdir -p "$OUT/extra"
 cp "$WORK/scummvm/backends/vkeybd/packs/vkeybd_default.zip" "$WORK/scummvm/backends/vkeybd/packs/vkeybd_small.zip" "$OUT/extra/"
+# launcher icons; the theme itself (scummbanana.zip) is committed in package/ and made by make-theme.py
+cp "$WORK/scummvm/gui/themes/gui-icons.dat" "$OUT/extra/"
 
 cd /usr/lib/aarch64-linux-gnu
 for f in libjpeg.so.62 libsndio.so.7 libbsd.so.0 libmd.so.0 libFLAC.so.14 libmad.so.0; do cp -L "$f" "$OUT/lib/"; done

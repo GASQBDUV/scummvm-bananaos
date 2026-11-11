@@ -13,6 +13,10 @@ The zip contains the ScummVM program and six shared libraries. Everything is bui
 | FLAC (`libFLAC.so.14`) | 1.5.0+ds-2 | BSD-3-Clause | <https://packages.debian.org/source/trixie/flac> |
 | libmad (`libmad.so.0`) | 0.15.1b-11 | GPL-2.0-or-later | <https://packages.debian.org/source/trixie/libmad> |
 
+The data files in `roms/ports/ScummVM/extra/` (`*.dat`, `queen.tbl`, `sky.cpt` ...) are ScummVM's `dists/engine-data` (GPL-2.0-or-later,
+some with their own licences, see the README in that folder), unchanged; the engines for Drascula, Kyra, Hugo, Queen, Lure, Sky and others
+refuse to start without them.
+
 The menu theme `scummbanana.zip` is ScummVM's *scummremastered* theme (GPL-2.0-or-later) recolored, with the **Inter** font
 (`Inter-Regular.ttf`, `Inter-Bold.ttf`; SIL Open Font License 1.1, licence text in `roms/ports/ScummVM/extra/Inter-LICENSE.txt`,
 <https://github.com/rsms/inter>). Its colours follow Banana Player's Midnight theme. `gui-icons.dat` is built with ScummVM, unchanged.

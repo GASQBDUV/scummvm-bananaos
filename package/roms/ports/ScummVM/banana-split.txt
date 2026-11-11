@@ -14,3 +14,6 @@ Day of the Tentacle=144
 Maniac Mansion=144
 Zak McKracken=144
 Loom=144
+# Measured from screenshots on the device (2026-11): Simon the Sorcerer's verb panel starts at line 134, Bud Tucker's at line 140
+Simon the Sorcerer=134
+Bud Tucker=140

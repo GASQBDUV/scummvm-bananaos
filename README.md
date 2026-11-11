@@ -9,6 +9,12 @@ used instead of sitting idle. Unzip it on the card, put your games in a folder, 
 - **Zoom** (works in every game): the top screen shows an enlarged part of the picture that follows the pointer, the bottom screen
   the whole picture with a frame around what is enlarged. 1.5x, 2x and 3x.
 
+**All of ScummVM's engines that need no OpenGL are in** (about 80): SCUMM (Monkey Island, Day of the Tentacle, Sam & Max, Full Throttle,
+Loom ...), Sierra's **AGI** (King's Quest 1-4, Space Quest 1-2, Leisure Suit Larry 1 ...) and **SCI**, Kyrandia, Lands of Lore,
+Simon the Sorcerer, Beneath a Steel Sky, Flight of the Amazon Queen, Lure of the Temptress, Drascula, DreamWeb, Discworld, Toonstruck,
+Touché, Bud Tucker, Inherit the Earth, Future Wars, Return to Zork, the Hugo games and more. The 3D engines (Grim Fandango, Myst III,
+Blade Runner ...) are not, they need OpenGL.
+
 One button (R2) goes round the three. Music in FLAC (the CD versions of the Monkey Islands), Ogg Vorbis and MP3 works. An on-screen keyboard (Select) lets you type
 in games that ask for text, for example the copy protection codes of Monkey Island 2.
 
@@ -29,7 +35,8 @@ RG DS Plus. The game's graphics belong to their owners; no game files are includ
 2. Unzip it at the **root of the data partition** (the card that holds `roms/`), so that `roms/ports/ScummVM.sh`,
    `roms/ports/ScummVM Two Screens.sh` and the folder `roms/ports/ScummVM/` end up next to your other ports.
 3. Put each game in its own folder under `roms/scummvm/`, for example `roms/scummvm/monkey1/` with `MONKEY.000`, `MONKEY.001`
-   and the music files in it. Games are not included, you need your own copies.
+   and the music files in it. Games are not included, you need your own copies. (Demos and freeware games that ScummVM lists at <https://www.scummvm.org/games/>
+   and <https://www.scummvm.org/demos/> work the same way.)
 4. Start **ScummVM Two Screens** from the ports list (or **ScummVM** to use the top screen only). The games are registered
    automatically at every start, so a new folder only needs a restart.
 
@@ -40,6 +47,15 @@ That is all: nothing else has to be installed. The zip carries its own copies of
 **Checked on the device:** the stick, A, Select (on-screen keyboard), touch in all three modes, the mode switch and the zoom following both stick and touch.
 **Not yet checked button by button:** L1, L2, R1, L3, Y, Start (they are set in `scummvm.gptk`; if one does nothing,
 change it there).
+**Tested with demos and freeware games (headless on the device, 56 games):** every one started its engine and ran for 15 seconds
+without a crash; a screenshot of the top screen was taken of each and they all looked right. They included the AGI demos
+(King's Quest IV, Space Quest I, King's Quest III), SCI demos (King's Quest I/VI, Space Quest III/VI, Laura Bow, Quest for Glory,
+Freddy Pharkas, Police Quest 3, Castle of Dr. Brain, Conquests of Camelot), Kyrandia, Lands of Lore, Simon the Sorcerer, Beneath a
+Steel Sky, Flight of the Amazon Queen, Lure of the Temptress, Drascula, DreamWeb, Hugo, Darkseed, Discworld, Toonstruck, Touché,
+Bud Tucker, Return to Zork, Future Wars, Parallaction, the Griffon Legend, God of Thunder, Soltys, Sfinx, Mystery House and a few
+SLUDGE games. Nobody has *played* them with the buttons yet, and the speed of the heavier ones (Lands of Lore, Toonstruck, Discworld,
+Return to Zork) on the device is not measured. Two of them show a ScummVM dialog instead of the game: the Inherit the Earth DOS demo ("Game not implemented") and the Big Red
+Adventure demo (a warning that needs a click on "Start anyway"). Drascula says its CD music tracks are missing (the freeware version has none).
 **Tested games:** The Secret of Monkey Island (CD, DOS VGA): all three modes. Monkey Island 2 (Amiga) and Sam & Max Hit the Road
 were detected and registered by ScummVM, but I have not played them through. Monkey Island 2 is in the verb-screen list (same layout, unverified);
 Sam & Max is not, so for it R2 goes between mirror and zoom.
@@ -66,6 +82,23 @@ ScummVM's own game-controller handling is switched off (`--joystick=-1`), so onl
 
 ScummVM's own menu (opened from inside a game) is only half visible in the verb screen; press R2 to go back to mirror while it
 is open.
+
+## Keyboard games (AGI, Hugo, Hi-Res Adventure)
+
+Sierra's AGI games (King's Quest 1-4, Space Quest 1-2, Police Quest 1, Leisure Suit Larry 1 ...) are walked with the arrow keys and
+take typed commands, so the launcher switches to a second button map, `scummvm-keys.gptk`, when ScummVM starts an AGI, Hugo or
+Hi-Res Adventure (adl) game, and back to the normal one for every other game:
+
+| Button | Does in those games |
+|---|---|
+| **D-pad** | arrow keys (walk) |
+| Left stick | pointer (AGI also walks to where you click) |
+| **A** | Enter (run the typed command, "press any key") |
+| **L1** | left click, **B** / **L2** right click |
+| **X** | Esc (the AGI menu) |
+| **Y** | F3 (repeat the last command) |
+| **Start** | F5 (save) |
+| **Select** | on-screen keyboard: tap the letters to type a command, then A |
 
 ## Typing text
 
